@@ -29,6 +29,9 @@ dependencies:
   freezed_annotation: ^0.14.1
   dartz: ^0.9.2
   flutter_bloc: ^7.0.0
+  google_sign_in: ^5.0.2
+  firebase_auth: ^1.1.4
+  firebase_core: ^1.1.1
 
 
 dev_dependencies:
