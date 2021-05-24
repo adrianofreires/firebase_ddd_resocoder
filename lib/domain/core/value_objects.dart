@@ -3,6 +3,7 @@ import 'package:firebase_ddd_resocoder/domain/core/errors.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:firebase_ddd_resocoder/domain/core/failures.dart';
+import 'package:uuid/uuid.dart';
 
 @immutable
 abstract class ValueObject<T> {
@@ -28,4 +29,23 @@ abstract class ValueObject<T> {
 
   @override
   String toString() => 'Value($value)';
+}
+
+class UniqueID extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory UniqueID() {
+    return UniqueID._(
+      right(Uuid().v1()),
+    );
+  }
+
+  factory UniqueID.fromUniqueString(String uniqueID) {
+    return UniqueID._(
+      right(uniqueID),
+    );
+  }
+
+  const UniqueID._(this.value);
 }
