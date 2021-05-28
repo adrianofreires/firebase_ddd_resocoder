@@ -33,6 +33,7 @@ dependencies:
   google_sign_in: ^5.0.2
   injectable: ^1.4.0
   uuid: ^3.0.4
+  kt_dart: ^0.9.1
 
 dev_dependencies:
   flutter_test:
