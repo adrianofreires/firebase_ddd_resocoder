@@ -28,7 +28,7 @@ class NoteRepository implements INoteRepository {
                   .toImmutableList(),
             ))
         .onErrorReturnWith((error, stackTrace) {
-      if (error is PlatformException &&
+      if (error is FirebaseException &&
           error.message!.contains('PERMISSION_DENIED')) {
         return left(const NoteFailure.insufficientPermission());
       } else {
@@ -53,7 +53,7 @@ class NoteRepository implements INoteRepository {
               .toImmutableList()),
         )
         .onErrorReturnWith((error, stackTrace) {
-      if (error is PlatformException &&
+      if (error is FirebaseException &&
           error.message!.contains('PERMISSION_DENIED')) {
         return left(const NoteFailure.insufficientPermission());
       } else {
@@ -68,9 +68,11 @@ class NoteRepository implements INoteRepository {
     try {
       final userDoc = await _firebaseFirestore.userDocument();
       final noteDto = NoteDto.fromDomain(note);
+
       await userDoc.noteCollection.doc(noteDto.id).set(noteDto.toJson());
+
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {
         return left(const NoteFailure.insufficientPermission());
       } else {
@@ -84,9 +86,11 @@ class NoteRepository implements INoteRepository {
     try {
       final userDoc = await _firebaseFirestore.userDocument();
       final noteDto = NoteDto.fromDomain(note);
+
       await userDoc.noteCollection.doc(noteDto.id).update(noteDto.toJson());
+
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {
         return left(const NoteFailure.insufficientPermission());
       } else if (e.message!.contains('NOT_FOUND')) {
@@ -101,10 +105,12 @@ class NoteRepository implements INoteRepository {
   Future<Either<NoteFailure, Unit>> delete(Note note) async {
     try {
       final userDoc = await _firebaseFirestore.userDocument();
-      final noteID = note.id.getOrCrash();
-      await userDoc.noteCollection.doc(noteID).delete();
+      final noteId = note.id.getOrCrash();
+
+      await userDoc.noteCollection.doc(noteId).delete();
+
       return right(unit);
-    } on PlatformException catch (e) {
+    } on FirebaseException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {
         return left(const NoteFailure.insufficientPermission());
       } else if (e.message!.contains('NOT_FOUND')) {

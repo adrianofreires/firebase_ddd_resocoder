@@ -18,7 +18,7 @@ abstract class NoteDto implements _$NoteDto {
     @JsonKey(ignore: true) String? id,
     required String body,
     required int color,
-    required List<TodoItemDto> todos,
+    required List<TodoItemDto?> todos,
     @ServerTimestampConverter() required FieldValue serverTimeStamp,
   }) = _NoteDto;
 
@@ -42,7 +42,7 @@ abstract class NoteDto implements _$NoteDto {
       id: UniqueID.fromUniqueString(id!),
       body: NoteBody(body),
       color: NoteColor(Color(color)),
-      todos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
+      todos: List3(todos.map((dto) => dto!.toDomain()).toImmutableList()),
     );
   }
 
@@ -50,7 +50,8 @@ abstract class NoteDto implements _$NoteDto {
       _$NoteDtoFromJson(json);
 
   factory NoteDto.fromFirestore(DocumentSnapshot doc) {
-    return NoteDto.fromJson(doc.data() as Map<String, dynamic>)
+    // ignore: cast_nullable_to_non_nullable
+    return NoteDto.fromJson(doc.data()! as Map<String, dynamic>)
         .copyWith(id: doc.id);
   }
 }
@@ -67,7 +68,9 @@ class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
 }
 
 @freezed
-abstract class TodoItemDto with _$TodoItemDto {
+abstract class TodoItemDto implements _$TodoItemDto {
+  const TodoItemDto._();
+
   const factory TodoItemDto({
     required String id,
     required String name,

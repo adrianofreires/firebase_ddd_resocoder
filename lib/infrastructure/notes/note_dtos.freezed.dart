@@ -24,7 +24,7 @@ class _$NoteDtoTearOff {
       {@JsonKey(ignore: true) String? id,
       required String body,
       required int color,
-      required List<TodoItemDto> todos,
+      required List<TodoItemDto?> todos,
       @ServerTimestampConverter() required FieldValue serverTimeStamp}) {
     return _NoteDto(
       id: id,
@@ -49,7 +49,7 @@ mixin _$NoteDto {
   String? get id => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   int get color => throw _privateConstructorUsedError;
-  List<TodoItemDto> get todos => throw _privateConstructorUsedError;
+  List<TodoItemDto?> get todos => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
 
@@ -66,7 +66,7 @@ abstract class $NoteDtoCopyWith<$Res> {
       {@JsonKey(ignore: true) String? id,
       String body,
       int color,
-      List<TodoItemDto> todos,
+      List<TodoItemDto?> todos,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
@@ -102,7 +102,7 @@ class _$NoteDtoCopyWithImpl<$Res> implements $NoteDtoCopyWith<$Res> {
       todos: todos == freezed
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
-              as List<TodoItemDto>,
+              as List<TodoItemDto?>,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$NoteDtoCopyWith<$Res> implements $NoteDtoCopyWith<$Res> {
       {@JsonKey(ignore: true) String? id,
       String body,
       int color,
-      List<TodoItemDto> todos,
+      List<TodoItemDto?> todos,
       @ServerTimestampConverter() FieldValue serverTimeStamp});
 }
 
@@ -157,7 +157,7 @@ class __$NoteDtoCopyWithImpl<$Res> extends _$NoteDtoCopyWithImpl<$Res>
       todos: todos == freezed
           ? _value.todos
           : todos // ignore: cast_nullable_to_non_nullable
-              as List<TodoItemDto>,
+              as List<TodoItemDto?>,
       serverTimeStamp: serverTimeStamp == freezed
           ? _value.serverTimeStamp
           : serverTimeStamp // ignore: cast_nullable_to_non_nullable
@@ -188,7 +188,7 @@ class _$_NoteDto extends _NoteDto {
   @override
   final int color;
   @override
-  final List<TodoItemDto> todos;
+  final List<TodoItemDto?> todos;
   @override
   @ServerTimestampConverter()
   final FieldValue serverTimeStamp;
@@ -240,7 +240,7 @@ abstract class _NoteDto extends NoteDto {
           {@JsonKey(ignore: true) String? id,
           required String body,
           required int color,
-          required List<TodoItemDto> todos,
+          required List<TodoItemDto?> todos,
           @ServerTimestampConverter() required FieldValue serverTimeStamp}) =
       _$_NoteDto;
   const _NoteDto._() : super._();
@@ -255,7 +255,7 @@ abstract class _NoteDto extends NoteDto {
   @override
   int get color => throw _privateConstructorUsedError;
   @override
-  List<TodoItemDto> get todos => throw _privateConstructorUsedError;
+  List<TodoItemDto?> get todos => throw _privateConstructorUsedError;
   @override
   @ServerTimestampConverter()
   FieldValue get serverTimeStamp => throw _privateConstructorUsedError;
@@ -386,9 +386,10 @@ class __$TodoItemDtoCopyWithImpl<$Res> extends _$TodoItemDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TodoItemDto implements _TodoItemDto {
+class _$_TodoItemDto extends _TodoItemDto {
   const _$_TodoItemDto(
-      {required this.id, required this.name, required this.done});
+      {required this.id, required this.name, required this.done})
+      : super._();
 
   factory _$_TodoItemDto.fromJson(Map<String, dynamic> json) =>
       _$_$_TodoItemDtoFromJson(json);
@@ -433,19 +434,14 @@ class _$_TodoItemDto implements _TodoItemDto {
   Map<String, dynamic> toJson() {
     return _$_$_TodoItemDtoToJson(this);
   }
-
-  @override
-  TodoItem toDomain() {
-    // TODO: implement toDomain
-    throw UnimplementedError();
-  }
 }
 
-abstract class _TodoItemDto implements TodoItemDto {
+abstract class _TodoItemDto extends TodoItemDto {
   const factory _TodoItemDto(
       {required String id,
       required String name,
       required bool done}) = _$_TodoItemDto;
+  const _TodoItemDto._() : super._();
 
   factory _TodoItemDto.fromJson(Map<String, dynamic> json) =
       _$_TodoItemDto.fromJson;
