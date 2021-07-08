@@ -1,6 +1,9 @@
 import 'package:firebase_ddd_resocoder/application/notes/note_watcher/note_watcher_bloc.dart';
+import 'package:firebase_ddd_resocoder/presentation/notes/notes_overview/widgets/note_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'error_note_card_widget.dart';
 
 class NotesOverviewBody extends StatelessWidget {
   const NotesOverviewBody({Key? key}) : super(key: key);
@@ -19,17 +22,11 @@ class NotesOverviewBody extends StatelessWidget {
             itemBuilder: (context, index) {
               final note = state.notes[index];
               if (note.failureOption.isSome()) {
-                return Container(
-                  color: Colors.red,
-                  width: 100,
-                  height: 100,
+                return ErrorNoteCard(
+                  note: note,
                 );
               } else {
-                return Container(
-                  color: Colors.green,
-                  width: 100,
-                  height: 100,
-                );
+                return NoteCard(note: note);
               }
             },
             itemCount: state.notes.size,
