@@ -3,6 +3,7 @@ import 'package:firebase_ddd_resocoder/presentation/notes/notes_overview/widgets
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'critical_failure_display_widget.dart';
 import 'error_note_card_widget.dart';
 
 class NotesOverviewBody extends StatelessWidget {
@@ -33,11 +34,7 @@ class NotesOverviewBody extends StatelessWidget {
           );
         },
         loadFailure: (state) {
-          return Container(
-            color: Colors.yellow,
-            width: 200,
-            height: 200,
-          );
+          return CriticalFailureDisplay(failure: state.noteFailure);
         },
       );
     });
