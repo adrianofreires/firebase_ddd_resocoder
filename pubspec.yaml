@@ -23,26 +23,27 @@ dependencies:
     sdk: flutter
   another_flushbar: ^1.10.22
   auto_route: ^2.2.0
+  cloud_firestore: ^2.2.2
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.2
   firebase_auth: ^1.4.1
   firebase_core: ^1.3.0
   flutter_bloc: ^7.0.1
+  flutter_hooks: ^0.18.0
   freezed_annotation: ^0.14.2
   get_it: ^7.1.3
   google_sign_in: ^5.0.4
   injectable: ^1.4.1
   json_annotation: ^4.0.1
   kt_dart: ^0.9.1
-  uuid: ^3.0.4
-  cloud_firestore: ^2.2.2
   rxdart: ^0.27.1
+  uuid: ^3.0.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   auto_route_generator: ^2.1.0
-  build_runner: 
+  build_runner: null
   freezed: ^0.14.2
   injectable_generator: ^1.4.1
   json_serializable: ^4.1.3
