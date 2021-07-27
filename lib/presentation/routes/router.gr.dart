@@ -7,6 +7,8 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:flutter/material.dart' as _i2;
 
+import '../../domain/notes/note.dart' as _i7;
+import '../notes/note_form/note_form_page.dart' as _i6;
 import '../notes/notes_overview/notes_overview_page.dart' as _i5;
 import '../sign_in/sign_in_page.dart' as _i4;
 import '../splash/splash_page.dart' as _i3;
@@ -31,14 +33,23 @@ class Router extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i5.NotesOverviewPage();
-        })
+        }),
+    NoteFormRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<NoteFormRouteArgs>(
+              orElse: () => const NoteFormRouteArgs());
+          return _i6.NoteFormPage(key: args.key, editedNote: args.editedNote);
+        },
+        fullscreenDialog: true)
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(SplashRoute.name, path: '/'),
         _i1.RouteConfig(SignInRoute.name, path: '/sign-in-page'),
-        _i1.RouteConfig(NotesOverviewRoute.name, path: '/notes-overview-page')
+        _i1.RouteConfig(NotesOverviewRoute.name, path: '/notes-overview-page'),
+        _i1.RouteConfig(NoteFormRoute.name, path: '/note-form-page')
       ];
 }
 
@@ -58,4 +69,21 @@ class NotesOverviewRoute extends _i1.PageRouteInfo {
   const NotesOverviewRoute() : super(name, path: '/notes-overview-page');
 
   static const String name = 'NotesOverviewRoute';
+}
+
+class NoteFormRoute extends _i1.PageRouteInfo<NoteFormRouteArgs> {
+  NoteFormRoute({_i2.Key? key, _i7.Note? editedNote})
+      : super(name,
+            path: '/note-form-page',
+            args: NoteFormRouteArgs(key: key, editedNote: editedNote));
+
+  static const String name = 'NoteFormRoute';
+}
+
+class NoteFormRouteArgs {
+  const NoteFormRouteArgs({this.key, this.editedNote});
+
+  final _i2.Key? key;
+
+  final _i7.Note? editedNote;
 }
