@@ -12,12 +12,15 @@ abstract class ValueObject<T> {
 
   /// Throws [UnexpectedValueError] containing the [ValueFailure]
   T getOrCrash() {
-    // id =  identity - same as writing (right) => right;
+    // id = identity - same as writing (right) => right
     return value.fold((f) => throw UnexpectedValueError(f), id);
   }
 
   Either<ValueFailure<dynamic>, Unit> get failureOrUnit {
-    return value.fold((l) => left(l), (r) => right(unit));
+    return value.fold(
+      (l) => left(l),
+      (r) => right(unit),
+    );
   }
 
   bool isValid() => value.isRight();
@@ -25,6 +28,7 @@ abstract class ValueObject<T> {
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
+
     return o is ValueObject<T> && o.value == value;
   }
 
@@ -35,21 +39,21 @@ abstract class ValueObject<T> {
   String toString() => 'Value($value)';
 }
 
-class UniqueID extends ValueObject<String> {
+class UniqueId extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory UniqueID() {
-    return UniqueID._(
-      right(Uuid().v1()),
+  factory UniqueId() {
+    return UniqueId._(
+      right(const Uuid().v1()),
     );
   }
 
-  factory UniqueID.fromUniqueString(String uniqueID) {
-    return UniqueID._(
-      right(uniqueID),
+  factory UniqueId.fromUniqueString(String uniqueId) {
+    return UniqueId._(
+      right(uniqueId),
     );
   }
 
-  const UniqueID._(this.value);
+  const UniqueId._(this.value);
 }

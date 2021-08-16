@@ -15,13 +15,13 @@ class FormTodos extends ValueNotifier<KtList<TodoItemPrimitive>> {
 abstract class TodoItemPrimitive implements _$TodoItemPrimitive {
   const TodoItemPrimitive._();
   const factory TodoItemPrimitive({
-    required UniqueID id,
+    required UniqueId id,
     required String name,
     required bool done,
   }) = _TodoItemPrimitive;
 
   factory TodoItemPrimitive.empty() =>
-      TodoItemPrimitive(id: UniqueID(), name: '', done: false);
+      TodoItemPrimitive(id: UniqueId(), name: '', done: false);
 
   factory TodoItemPrimitive.fromDomain(TodoItem todoItem) {
     return TodoItemPrimitive(

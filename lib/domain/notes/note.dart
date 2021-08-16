@@ -12,14 +12,14 @@ part 'note.freezed.dart';
 abstract class Note implements _$Note {
   const Note._();
   const factory Note({
-    required UniqueID id,
+    required UniqueId id,
     required NoteBody body,
     required NoteColor color,
     required List3<TodoItem> todos,
   }) = _Note;
 
   factory Note.empty() => Note(
-        id: UniqueID(),
+        id: UniqueId(),
         body: NoteBody(''),
         color: NoteColor(NoteColor.predefinedColors[0]),
         todos: List3(emptyList()),
@@ -30,8 +30,10 @@ abstract class Note implements _$Note {
         .andThen(
           todos
               .getOrCrash()
+              // Getting the failureOption from the TodoItem ENTITY - NOT a failureOrUnit from a VALUE OBJECT
               .map((todoItem) => todoItem.failureOption)
               .filter((o) => o.isSome())
+              // If we can't get the 0th element, the list is empty. In such a case, it's valid.
               .getOrElse(0, (_) => none())
               .fold(() => right(unit), (f) => left(f)),
         )

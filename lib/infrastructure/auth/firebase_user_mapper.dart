@@ -5,7 +5,7 @@ import 'package:firebase_ddd_resocoder/domain/core/value_objects.dart';
 extension FirebaseUserDomainX on firebase.User {
   User toDomain() {
     return User(
-      id: UniqueID.fromUniqueString(uid),
+      id: UniqueId.fromUniqueString(uid),
     );
   }
 }

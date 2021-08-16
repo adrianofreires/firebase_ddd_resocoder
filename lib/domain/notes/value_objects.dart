@@ -24,7 +24,7 @@ class TodoName extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  static const maxLength = 1000;
+  static const maxLength = 30;
 
   factory TodoName(String input) {
     return TodoName._(
@@ -49,8 +49,6 @@ class NoteColor extends ValueObject<Color> {
   ];
   @override
   final Either<ValueFailure<Color>, Color> value;
-
-  static const maxLength = 1000;
 
   factory NoteColor(Color input) {
     return NoteColor._(

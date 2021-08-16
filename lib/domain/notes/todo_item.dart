@@ -11,13 +11,13 @@ abstract class TodoItem implements _$TodoItem {
   const TodoItem._();
 
   const factory TodoItem({
-    required UniqueID id,
+    required UniqueId id,
     required TodoName name,
     required bool done,
   }) = _TodoItem;
 
   factory TodoItem.empty() => TodoItem(
-        id: UniqueID(),
+        id: UniqueId(),
         name: TodoName(''),
         done: false,
       );

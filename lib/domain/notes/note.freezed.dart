@@ -17,7 +17,7 @@ class _$NoteTearOff {
   const _$NoteTearOff();
 
   _Note call(
-      {required UniqueID id,
+      {required UniqueId id,
       required NoteBody body,
       required NoteColor color,
       required List3<TodoItem> todos}) {
@@ -35,7 +35,7 @@ const $Note = _$NoteTearOff();
 
 /// @nodoc
 mixin _$Note {
-  UniqueID get id => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
   NoteBody get body => throw _privateConstructorUsedError;
   NoteColor get color => throw _privateConstructorUsedError;
   List3<TodoItem> get todos => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $NoteCopyWith<$Res> {
   factory $NoteCopyWith(Note value, $Res Function(Note) then) =
       _$NoteCopyWithImpl<$Res>;
   $Res call(
-      {UniqueID id, NoteBody body, NoteColor color, List3<TodoItem> todos});
+      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> todos});
 }
 
 /// @nodoc
@@ -71,7 +71,7 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueID,
+              as UniqueId,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -94,7 +94,7 @@ abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
       __$NoteCopyWithImpl<$Res>;
   @override
   $Res call(
-      {UniqueID id, NoteBody body, NoteColor color, List3<TodoItem> todos});
+      {UniqueId id, NoteBody body, NoteColor color, List3<TodoItem> todos});
 }
 
 /// @nodoc
@@ -117,7 +117,7 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueID,
+              as UniqueId,
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -145,7 +145,7 @@ class _$_Note extends _Note {
       : super._();
 
   @override
-  final UniqueID id;
+  final UniqueId id;
   @override
   final NoteBody body;
   @override
@@ -188,14 +188,14 @@ class _$_Note extends _Note {
 
 abstract class _Note extends Note {
   const factory _Note(
-      {required UniqueID id,
+      {required UniqueId id,
       required NoteBody body,
       required NoteColor color,
       required List3<TodoItem> todos}) = _$_Note;
   const _Note._() : super._();
 
   @override
-  UniqueID get id => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
   NoteBody get body => throw _privateConstructorUsedError;
   @override

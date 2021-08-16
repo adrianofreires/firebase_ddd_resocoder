@@ -17,7 +17,7 @@ class _$TodoItemPrimitiveTearOff {
   const _$TodoItemPrimitiveTearOff();
 
   _TodoItemPrimitive call(
-      {required UniqueID id, required String name, required bool done}) {
+      {required UniqueId id, required String name, required bool done}) {
     return _TodoItemPrimitive(
       id: id,
       name: name,
@@ -31,7 +31,7 @@ const $TodoItemPrimitive = _$TodoItemPrimitiveTearOff();
 
 /// @nodoc
 mixin _$TodoItemPrimitive {
-  UniqueID get id => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   bool get done => throw _privateConstructorUsedError;
 
@@ -45,7 +45,7 @@ abstract class $TodoItemPrimitiveCopyWith<$Res> {
   factory $TodoItemPrimitiveCopyWith(
           TodoItemPrimitive value, $Res Function(TodoItemPrimitive) then) =
       _$TodoItemPrimitiveCopyWithImpl<$Res>;
-  $Res call({UniqueID id, String name, bool done});
+  $Res call({UniqueId id, String name, bool done});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$TodoItemPrimitiveCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueID,
+              as UniqueId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$TodoItemPrimitiveCopyWith<$Res>
           _TodoItemPrimitive value, $Res Function(_TodoItemPrimitive) then) =
       __$TodoItemPrimitiveCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueID id, String name, bool done});
+  $Res call({UniqueId id, String name, bool done});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$TodoItemPrimitiveCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as UniqueID,
+              as UniqueId,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ class _$_TodoItemPrimitive extends _TodoItemPrimitive {
       : super._();
 
   @override
-  final UniqueID id;
+  final UniqueId id;
   @override
   final String name;
   @override
@@ -170,13 +170,13 @@ class _$_TodoItemPrimitive extends _TodoItemPrimitive {
 
 abstract class _TodoItemPrimitive extends TodoItemPrimitive {
   const factory _TodoItemPrimitive(
-      {required UniqueID id,
+      {required UniqueId id,
       required String name,
       required bool done}) = _$_TodoItemPrimitive;
   const _TodoItemPrimitive._() : super._();
 
   @override
-  UniqueID get id => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
   @override
